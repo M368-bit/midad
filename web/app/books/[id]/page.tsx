@@ -294,3 +294,5 @@ export default async function BookDetailPage({ params }: BookDetailPageProps) {
     </div>
   );
 }
+
+export async function generateStaticParams() { const books = await getBooks(); return books.map(b => ({ id: b.slug })); }

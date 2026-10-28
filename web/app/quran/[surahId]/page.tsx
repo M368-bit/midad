@@ -55,3 +55,5 @@ export default async function SurahPage({ params, searchParams }: SurahPageProps
     </div>
   );
 }
+
+export async function generateStaticParams() { return Array.from({ length: 114 }, (_, i) => ({ surahId: String(i + 1) })); }

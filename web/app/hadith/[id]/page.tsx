@@ -45,3 +45,5 @@ export default async function HadithDetailPage({ params }: HadithDetailPageProps
     </div>
   );
 }
+
+export async function generateStaticParams() { const hadiths = await getHadiths(); return hadiths.map(h => ({ id: h.id })); }

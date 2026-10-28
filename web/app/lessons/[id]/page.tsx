@@ -176,3 +176,5 @@ export default async function LessonDetailPage({ params }: LessonDetailPageProps
     </div>
   );
 }
+
+export async function generateStaticParams() { const lessons = await getLessons(); return lessons.map(l => ({ id: l.slug })); }

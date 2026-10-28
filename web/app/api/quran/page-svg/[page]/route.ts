@@ -72,3 +72,5 @@ export async function GET(
     );
   }
 }
+
+export async function generateStaticParams() { return Array.from({ length: 604 }, (_, i) => ({ page: String(i + 1) })); }

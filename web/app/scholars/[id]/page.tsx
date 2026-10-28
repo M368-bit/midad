@@ -200,3 +200,5 @@ export default async function ScholarDetailPage({ params }: ScholarDetailPagePro
     </div>
   );
 }
+
+export async function generateStaticParams() { const scholars = await getScholars(); return scholars.map(s => ({ id: s.slug })); }
