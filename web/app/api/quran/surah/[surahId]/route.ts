@@ -57,5 +57,3 @@ export async function GET(
     return NextResponse.json({ error: "فشل تحميل بيانات السورة", details: msg }, { status: 500 });
   }
 }
-
-export async function generateStaticParams() { return Array.from({ length: 114 }, (_, i) => ({ surahId: String(i + 1) })); }

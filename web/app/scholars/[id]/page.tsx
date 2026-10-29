@@ -11,7 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import {
-  getScholarBySlug,
+  getScholarBySlug, getScholars,
   getBooks,
   getLessons,
 } from "@/lib/repositories/content-repository";

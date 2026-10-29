@@ -14,7 +14,7 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
-import { getBookBySlug } from "@/lib/repositories/content-repository";
+import { getBookBySlug, getBooks } from "@/lib/repositories/content-repository";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { FavoriteButton } from "@/components/shared/FavoriteButton";

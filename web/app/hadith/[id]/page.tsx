@@ -2,7 +2,7 @@ import React from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, Scroll } from "lucide-react";
-import { getHadithById } from "@/lib/repositories/content-repository";
+import { getHadithById, getHadiths } from "@/lib/repositories/content-repository";
 import { fetchVerifiedHadith } from "@/lib/services/hadith-api";
 import { HadithViewer } from "@/components/hadith/HadithViewer";
 
