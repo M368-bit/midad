@@ -23,7 +23,7 @@ import { GRAND_ISLAMIC_LIBRARY } from "../data/verified-books-catalog";
 import { searchQuranVerses } from "../services/quran-service";
 import { matchesArabicSearch, createSearchSnippet, normalizeArabic } from "../arabic-utils";
 import { isSupabaseConfigured } from "../supabase/config";
-import { createServerSupabaseClient } from "../supabase/server";
+import { createPublicSupabaseClient } from "../supabase/server";
 
 // ============================================================================
 // العلماء (Scholars)
@@ -35,9 +35,9 @@ export async function getScholars(options?: {
   isContemporary?: boolean;
   status?: string;
 }): Promise<Scholar[]> {
-  if (isSupabaseConfigured()) {
+  const supabase = createPublicSupabaseClient();
+  if (supabase) {
     try {
-      const supabase = await createServerSupabaseClient();
       let req = supabase.from("scholars").select("*, sources:scholar_sources(*)");
       if (options?.status) {
         req = req.eq("status", options.status);
@@ -64,9 +64,9 @@ export async function getScholars(options?: {
 }
 
 export async function getScholarBySlug(slug: string): Promise<Scholar | null> {
-  if (isSupabaseConfigured()) {
+  const supabase = createPublicSupabaseClient();
+  if (supabase) {
     try {
-      const supabase = await createServerSupabaseClient();
       const { data, error } = await supabase
         .from("scholars")
         .select("*, sources:scholar_sources(*)")
@@ -93,9 +93,9 @@ export async function getLessons(options?: {
   categoryId?: string;
   mediaType?: string;
 }): Promise<Lesson[]> {
-  if (isSupabaseConfigured()) {
+  const supabase = createPublicSupabaseClient();
+  if (supabase) {
     try {
-      const supabase = await createServerSupabaseClient();
       let req = supabase
         .from("lessons")
         .select("*, scholar:scholars(*), category:categories(*), sources:lesson_sources(*)")
@@ -143,9 +143,9 @@ export async function getBooks(options?: {
   scholarId?: string;
   categoryId?: string;
 }): Promise<Book[]> {
-  if (isSupabaseConfigured()) {
+  const supabase = createPublicSupabaseClient();
+  if (supabase) {
     try {
-      const supabase = await createServerSupabaseClient();
       let req = supabase
         .from("books")
         .select("*, author:scholars(*), category:categories(*), sources:book_sources(*)")
